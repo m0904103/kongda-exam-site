@@ -64,7 +64,7 @@ h1, h2, h3, .logo {
 
 /* Navigation */
 nav {
-    padding: 1.5rem 0;
+    padding: calc(1.5rem + env(safe-area-inset-top)) 0 1.5rem;
     position: absolute;
     width: 100%;
     top: 0;
@@ -100,10 +100,11 @@ nav .container {
 
 /* Header / Hero */
 header {
-    height: 90vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 5rem;
+    padding-top: calc(5rem + env(safe-area-inset-top));
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .hero-content {
@@ -287,9 +288,62 @@ footer {
     color: var(--text-muted);
 }
 
-/* Responsive */
+/* Responsive & iPhone Optimization */
 @media (max-width: 768px) {
-    h1 { font-size: 3.5rem; }
-    .hero-btns { flex-direction: column; }
-    .course-grid { grid-template-columns: 1fr; }
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    h1 { 
+        font-size: clamp(2.5rem, 12vw, 3.5rem); 
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    header p {
+        margin: 0 auto 2.5rem;
+    }
+
+    .hero-btns { 
+        flex-direction: column; 
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        padding: 1.2rem 2rem; /* Larger touch target */
+    }
+
+    .course-grid { 
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+    }
+
+    .course-card {
+        border-radius: 24px;
+    }
+
+    .card-content {
+        padding: 1.8rem;
+    }
+
+    .course-btn {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    footer {
+        padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+    }
+}
+
+/* Fix for high-refresh devices like iPhone 15 Pro */
+@media (prefers-reduced-motion: no-preference) {
+    * {
+        transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    }
 }
