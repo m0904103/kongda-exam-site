@@ -264,9 +264,14 @@ main {
     font-size: 1rem;
 }
 
+.card-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .course-btn {
-    align-self: flex-start;
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 1.5rem;
     border: 1px solid var(--primary);
     color: var(--primary);
     text-decoration: none;
@@ -278,6 +283,24 @@ main {
 .course-btn:hover {
     background: var(--primary);
     color: var(--navy);
+}
+
+.video-btn {
+    padding: 0.8rem 1.5rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.video-btn:hover {
+    background: #ef4444;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
 }
 
 /* Footer */
